@@ -17,17 +17,22 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.main);
-
+		Context.get().setPropertyId("YOUR PROPERTY ID"); // CHANGE ME!
+		
 		mAdView = new AdView(this);
-		mAdView.setAdUnitId("ca-app-pub-XXXXXXXXXXXX");
+		mAdView.setAdUnitId("ca-app-pub-XXXXX"); 		// CHANGE ME!
 		mAdView.setAdSize(AdSize.BANNER);
+		
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.mainLayout);
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT);
 		layout.addView(mAdView, params);
+		
 		mAdView.loadAd(new AdRequest.Builder().build());
-
-		Context.get().setPropertyId("YOUR-PROPERTY-ID");
+		
+		// This would typically be set every time you transition screens
+		Context.get().setScreen("Homepage");
+		Context.get().setTitle("Latest News");
 	}
 
 	@Override
